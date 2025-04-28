@@ -28,7 +28,7 @@ class FunJoke: UINavigationController {
     }
     
     func loadFunViews() {
-        self.title = "A Crass Joke
+        self.title = "A Crass Joke"
 
         firstVC.view.backgroundColor = .white
         firstVC.title = "Funny Joke Question"

@@ -77,4 +77,39 @@ class ImgJoke: UINavigationController {
     @objc func handleNextPage() {
         pushViewController(secondVC, animated: true)
     }
+    
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if animated {
+          UIView.transition(
+            with: self.view,
+            duration: 0.4,
+            options: .transitionFlipFromRight,
+            animations: {
+              super.pushViewController(viewController, animated: false)
+            },
+            completion: nil
+          )
+        } else {
+          super.pushViewController(viewController, animated: false)
+        }
+      }
+    
+    override func popViewController(animated: Bool) -> UIViewController? {
+        if animated {
+          var popped: UIViewController?
+          UIView.transition(
+            with: self.view,
+            duration: 0.4,
+            options: .transitionFlipFromLeft,
+            animations: {
+              popped = super.popViewController(animated: false)
+            },
+            completion: nil
+          )
+          return popped
+        } else {
+          return super.popViewController(animated: false)
+        }
+    }
+    
 }
